@@ -9,7 +9,6 @@
 <li> 언어:C#
 <li> 플랫폼:PC
 <li> 형상관리툴: GitHub
-<li> GitHub.Io: <a href="LimHyeongGyun.github.io">AcientRuins.Io</a>
 
 <!-- Contents --!>
 <h2 id="table-of-contents"> :book: 목차 </h2>
