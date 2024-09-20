@@ -27,7 +27,7 @@
   </ol>
 </details>
 <h2 id="about-the-project"> 1. 프로젝트 설명 </h2>
-<p align="justify"><b> 3D, 사이드탑뷰, 건설 시뮬레이션, 커뮤니케이션 </b></p>
+<p align="justify"><b> 장르:3D, 사이드탑뷰, 건설 시뮬레이션, 커뮤니케이션 </b></p>
 <p>DevelopMyTown!은 재산상속으로 받은 땅을 발전시켜 주민을 수집하고 재화를 생산하고 마을생활을 하며 도감을 수집하는 게임입니다.</p>
 
 <h2 id="overview"> 2. 게임개요 </h2>
