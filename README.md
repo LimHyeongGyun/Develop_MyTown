@@ -1,6 +1,6 @@
 <!-- HEADER --!>
 <div align="center">
-<h1> DevelopMyTown! </h1>
+<h1> Develop_MyTown! </h1>
 <div align=center> <img src="./ImageFolder/GamePoster.png" width="400" heigh="600"> </div>
 </div>
 <li> 개발기간: 2024.09.19 ~
