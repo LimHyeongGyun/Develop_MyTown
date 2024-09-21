@@ -24,10 +24,10 @@ public class StateManager : MonoBehaviour
     public enum MoveState
     {
         Idle,
-        Left,
-        Right,
         Front,
-        Back
+        Back,
+        Left,
+        Right
     }
     public enum PlayerState
     {

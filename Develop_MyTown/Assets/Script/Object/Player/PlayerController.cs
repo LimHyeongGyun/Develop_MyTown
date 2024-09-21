@@ -88,19 +88,19 @@ public class PlayerController : MonoBehaviour, IKeyInput
         {
             transform.position = Vector3.zero;
         }
-        if (moveState == MoveState.Left)
-        {
-
-        }
-        if (moveState == MoveState.Right)
-        {
-
-        }
         if (moveState == MoveState.Front)
         {
 
         }
         if (moveState == MoveState.Back)
+        {
+
+        }
+        if (moveState == MoveState.Left)
+        {
+
+        }
+        if (moveState == MoveState.Right)
         {
 
         }
