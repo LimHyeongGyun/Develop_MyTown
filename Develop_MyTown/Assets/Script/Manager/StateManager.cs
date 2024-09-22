@@ -19,6 +19,19 @@ public class StateManager : MonoBehaviour
         Up,
         Down
     }
+    public enum InputMouseType
+    {
+        None,
+        Up,
+        Down,
+        Drag
+    }
+    public enum MouseWheelValue
+    {
+        None,
+        Up,
+        Down
+    }
 
     //PlayerStateType
     public enum MoveState

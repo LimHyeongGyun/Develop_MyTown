@@ -1,11 +1,13 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class InputManager : MonoBehaviour
 {
     public Action<KeyCode, StateManager.InputKeyType> keyAction;
+    public Action<MouseButton, StateManager.InputMouseType> mouseAction;
     void Update()
     {
         InputValue();
@@ -47,6 +49,16 @@ public class InputManager : MonoBehaviour
             if (Input.GetKey(KeyCode.DownArrow))
                 keyAction.Invoke(KeyCode.DownArrow, StateManager.InputKeyType.Press);
             #endregion
+        }
+
+        if (mouseAction != null)
+        {
+            Vector2 wheelInput = Input.mouseScrollDelta;
+            //마우스 휠을 드래그 했을 때
+            if (wheelInput.y != 0)
+                mouseAction.Invoke(MouseButton.Middle, StateManager.InputMouseType.Drag);
+            if(wheelInput.y == 0)
+                mouseAction.Invoke(MouseButton.Middle, StateManager.InputMouseType.None);
         }
     }
 }
