@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 using static StateManager;
 
@@ -33,7 +32,7 @@ public class PlayerController : MonoBehaviour, IKeyInput
     void Update()
     {
         Move();
-        Rotate();
+        Rotation();
     }
 
     public void InputKeyValue(KeyCode keyCode, InputKeyType inputType)
@@ -71,7 +70,7 @@ public class PlayerController : MonoBehaviour, IKeyInput
         #region Press
         if (inputType == InputKeyType.Press)
         {
-            camera.ReturnToggleValue();
+            camera.ReturnZoomValue();
             //플레이어 이동 키
             if (keyCode == KeyCode.LeftArrow)
             {
@@ -120,7 +119,7 @@ public class PlayerController : MonoBehaviour, IKeyInput
             transform.position += new Vector3(1, 0, 0) * stats.speed * Time.deltaTime;
         }
     }
-    private void Rotate()
+    private void Rotation()
     {
         if (moveState == MoveState.Idle)
         {
@@ -128,7 +127,7 @@ public class PlayerController : MonoBehaviour, IKeyInput
         }
         if (moveState == MoveState.Front)
         {
-            transform.rotation = Quaternion.Euler(0, 0, 0);
+            transform.rotation = Quaternion.Euler(0, 0f, 0);
         }
         if (moveState == MoveState.Back)
         {

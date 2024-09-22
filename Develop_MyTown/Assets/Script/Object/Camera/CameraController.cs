@@ -24,9 +24,9 @@ public class CameraController : MonoBehaviour, IMouseInput
     Vector3 offset;
 
     //카메라 Zoom In/Out
-    public const float toggleSpeed = 200;
-    public const float minToggleValue = 5;
-    public const float maxToggleValue = 90;
+    public const float dragSpeed = 200;
+    public const float minZoomValue = 5;
+    public const float maxZoomValue = 90;
 
     private void Awake()
     {
@@ -94,33 +94,33 @@ public class CameraController : MonoBehaviour, IMouseInput
         //카메라 줌인/아웃
         if (mouseWheelValue == MouseWheelValue.Up)
         {
-            var toggleValue = cameraObj.GetComponent<Camera>().fieldOfView;
-            if (minToggleValue < toggleValue)
+            var zoomValue = cameraObj.GetComponent<Camera>().fieldOfView;
+            if (minZoomValue < zoomValue)
             {
-                toggleValue -= toggleSpeed * Time.deltaTime;
-                if (toggleValue < minToggleValue)
+                zoomValue -= dragSpeed * Time.deltaTime;
+                if (zoomValue < minZoomValue)
                 {
-                    toggleValue = minToggleValue;
+                    zoomValue = minZoomValue;
                 }
-                cameraObj.GetComponent<Camera>().fieldOfView = toggleValue;
+                cameraObj.GetComponent<Camera>().fieldOfView = zoomValue;
             }
         }
         if (mouseWheelValue == MouseWheelValue.Down)
         {
-            var toggleValue = cameraObj.GetComponent<Camera>().fieldOfView;
-            if (toggleValue < maxToggleValue)
+            var zoomValue = cameraObj.GetComponent<Camera>().fieldOfView;
+            if (zoomValue < maxZoomValue)
             {
-                toggleValue += toggleSpeed * Time.deltaTime;
-                if (toggleValue > maxToggleValue)
+                zoomValue += dragSpeed * Time.deltaTime;
+                if (zoomValue > maxZoomValue)
                 {
-                    toggleValue = maxToggleValue;
+                    zoomValue = maxZoomValue;
                 }
-                cameraObj.GetComponent<Camera>().fieldOfView = toggleValue;
+                cameraObj.GetComponent<Camera>().fieldOfView = zoomValue;
             }
         }
     }
     //줌 배율 원래상태로 변경
-    public void ReturnToggleValue()
+    public void ReturnZoomValue()
     {
         cameraObj.GetComponent<Camera>().fieldOfView = 60f;
     }
