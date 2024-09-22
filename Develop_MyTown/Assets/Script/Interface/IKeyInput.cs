@@ -5,6 +5,6 @@ using static StateManager;
 
 public interface IKeyInput
 {
-    void InputKeyValue(KeyCode keyCode, InputKeyType inputType, PlayerState playerState);
+    void InputKeyValue(KeyCode keyCode, InputKeyType inputType);
     
 }
