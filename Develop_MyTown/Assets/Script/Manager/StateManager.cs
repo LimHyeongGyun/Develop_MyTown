@@ -5,6 +5,7 @@ using UnityEngine;
 public class StateManager : MonoBehaviour
 {
     //InputType
+    #region Keyboard
     public enum InputKeyType
     {
         Up,
@@ -19,6 +20,9 @@ public class StateManager : MonoBehaviour
         Up,
         Down
     }
+    #endregion
+
+    #region Mouse
     public enum InputMouseType
     {
         None,
@@ -32,8 +36,9 @@ public class StateManager : MonoBehaviour
         Up,
         Down
     }
-
+    #endregion
     //PlayerStateType
+    #region Player
     public enum MoveState
     {
         Idle,
@@ -49,4 +54,5 @@ public class StateManager : MonoBehaviour
         interaction,
         Action
     }
+    #endregion
 }

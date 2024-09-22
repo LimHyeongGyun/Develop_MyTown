@@ -17,16 +17,16 @@ public class CameraController : MonoBehaviour, IMouseInput
     [SerializeField]
     private float camera_dist = 0f;
     private float camera_width = -5.5f;
-    private float camera_height = 3.5f;
+    private float camera_height = 8f;
 
-    private float cameraRotateX = 32f;
+    private const float cameraRotateX = 35;
 
     Vector3 offset;
 
     //카메라 Zoom In/Out
     public const float toggleSpeed = 200;
     public const float minToggleValue = 5;
-    public const float maxToggleValue = 90f;
+    public const float maxToggleValue = 90;
 
     private void Awake()
     {
@@ -34,8 +34,10 @@ public class CameraController : MonoBehaviour, IMouseInput
     }
     private void Start()
     {
-        inputManager.mouseAction += InputMouseValue;
+        CameraRotation();
         offset = cameraObj.position - characterBody.position;
+
+        inputManager.mouseAction += InputMouseValue;
     }
     void LateUpdate()
     {
@@ -46,13 +48,13 @@ public class CameraController : MonoBehaviour, IMouseInput
     private void CameraPosition()
     {
         cameraObj.localPosition = characterBody.position + offset; //플레이어와 일정간격 유지
-        //cameraObj.Translate(camera_dist);
     }
-    private void CameraRotate()
+    private void CameraRotation()
     {
-        //transform.rotation = new Vector3(cameraRotateX, 0, 0);
+        transform.rotation = Quaternion.Euler(cameraRotateX, 0, 0);
     }
     
+    //마우스 입력값 받기
     public void InputMouseValue(MouseButton mouseBtn, InputMouseType inputType)
     {
         if (inputType == InputMouseType.None)
@@ -83,7 +85,6 @@ public class CameraController : MonoBehaviour, IMouseInput
                 {
                     mouseWheelValue = MouseWheelValue.Down;
                 }
-                Debug.Log(wheelvalue.y);
             }
         }
     }
@@ -117,9 +118,10 @@ public class CameraController : MonoBehaviour, IMouseInput
                 cameraObj.GetComponent<Camera>().fieldOfView = toggleValue;
             }
         }
-        if (mouseWheelValue == MouseWheelValue.None)
-        {
-            
-        }
+    }
+    //줌 배율 원래상태로 변경
+    public void ReturnToggleValue()
+    {
+        cameraObj.GetComponent<Camera>().fieldOfView = 60f;
     }
 }

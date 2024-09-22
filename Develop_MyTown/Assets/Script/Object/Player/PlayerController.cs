@@ -6,6 +6,7 @@ using static StateManager;
 
 public class PlayerController : MonoBehaviour, IKeyInput
 {
+    private CameraController camera;
     [SerializeField]
     private PlayerStats stats;
 
@@ -20,6 +21,8 @@ public class PlayerController : MonoBehaviour, IKeyInput
         rigid = GetComponent<Rigidbody>();
 
         inputManager = FindObjectOfType<InputManager>();
+
+        camera = FindObjectOfType<CameraController>();
     }
     void Start()
     {
@@ -68,6 +71,7 @@ public class PlayerController : MonoBehaviour, IKeyInput
         #region Press
         if (inputType == InputKeyType.Press)
         {
+            camera.ReturnToggleValue();
             //플레이어 이동 키
             if (keyCode == KeyCode.LeftArrow)
             {
@@ -124,19 +128,19 @@ public class PlayerController : MonoBehaviour, IKeyInput
         }
         if (moveState == MoveState.Front)
         {
-            
+            transform.rotation = Quaternion.Euler(0, 0, 0);
         }
         if (moveState == MoveState.Back)
         {
-            
+            transform.rotation = Quaternion.Euler(0, 180f, 0);
         }
         if (moveState == MoveState.Left)
         {
-            
+            transform.rotation = Quaternion.Euler(0, -90f, 0);
         }
         if (moveState == MoveState.Right)
         {
-            
+            transform.rotation = Quaternion.Euler(0, 90f, 0);
         }
     }
 }
