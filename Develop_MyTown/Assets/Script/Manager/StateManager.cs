@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StateManager : MonoBehaviour
+public class StateManager
 {
     //InputType
     #region Keyboard
@@ -53,6 +53,36 @@ public class StateManager : MonoBehaviour
         Move,
         interaction,
         Action
+    }
+    #endregion
+
+    //StructureType
+    #region 건축물
+    public enum BuildMode
+    {
+        Observe,
+        Build
+    }
+    public enum StructureManagement
+    {
+        None,
+        Move,
+        Store
+    }
+    //건물 타입
+    public enum StructureType
+    {
+        House,
+        Production,
+        Curtural,
+        Statue
+    }
+    //가동상태
+    public enum OperateType
+    {
+        Stop,
+        Operate,
+        None
     }
     #endregion
 }

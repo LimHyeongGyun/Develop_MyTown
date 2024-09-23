@@ -8,6 +8,7 @@ public class InputManager : MonoBehaviour
 {
     public Action<KeyCode, StateManager.InputKeyType> keyAction;
     public Action<MouseButton, StateManager.InputMouseType> mouseAction;
+
     void Update()
     {
         InputValue();

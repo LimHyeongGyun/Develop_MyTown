@@ -1,27 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static StateManager;
 
 public class PlayerController : MonoBehaviour, IKeyInput
 {
-    private CameraController camera;
+    private InputManager inputManager;
+    private CameraController cameraCon;
     [SerializeField]
     private PlayerStats stats;
 
-    private InputManager inputManager;
-    public MoveState moveState;
-    public PlayerState playerState;
+    public StateManager.MoveState moveState;
+    public StateManager.PlayerState playerState;
 
     private Rigidbody rigid;
+    private Animator animator;
 
     private void Awake()
     {
         rigid = GetComponent<Rigidbody>();
 
         inputManager = FindObjectOfType<InputManager>();
-
-        camera = FindObjectOfType<CameraController>();
+        cameraCon = FindObjectOfType<CameraController>();
     }
     void Start()
     {
@@ -35,62 +34,62 @@ public class PlayerController : MonoBehaviour, IKeyInput
         Rotation();
     }
 
-    public void InputKeyValue(KeyCode keyCode, InputKeyType inputType)
+    public void InputKeyValue(KeyCode keyCode, StateManager.InputKeyType inputType)
     {
         //KeyDown
         #region KeyDown
-        if (inputType == InputKeyType.Down)
+        if (inputType == StateManager.InputKeyType.Down)
         {
             //플레이어 상호작용 키
             if (keyCode == KeyCode.F)
             {
-                playerState = PlayerState.interaction;
+                playerState = StateManager.PlayerState.interaction;
             }
 
             //플레이어 액션 키
             if (keyCode == KeyCode.Space)
             {
-                playerState = PlayerState.Action;
+                playerState = StateManager.PlayerState.Action;
             }
         }
         #endregion
         //KeyUp
         #region KeyUp
-        if (inputType == InputKeyType.Up)
+        if (inputType == StateManager.InputKeyType.Up)
         {
             if (keyCode == KeyCode.LeftArrow || keyCode == KeyCode.RightArrow
                 || keyCode == KeyCode.UpArrow || keyCode == KeyCode.DownArrow)
             {
-                playerState = PlayerState.None;
-                moveState = MoveState.Idle;
+                playerState = StateManager.PlayerState.None;
+                moveState = StateManager.MoveState.Idle;
             }
         }
         #endregion
         //Key
         #region Press
-        if (inputType == InputKeyType.Press)
+        if (inputType == StateManager.InputKeyType.Press)
         {
-            camera.ReturnZoomValue();
+            cameraCon.ReturnZoomValue();
             //플레이어 이동 키
             if (keyCode == KeyCode.LeftArrow)
             {
-                playerState = PlayerState.Move;
-                moveState = MoveState.Left;
+                playerState = StateManager.PlayerState.Move;
+                moveState = StateManager.MoveState.Left;
             }
             else if (keyCode == KeyCode.RightArrow)
             {
-                playerState = PlayerState.Move;
-                moveState = MoveState.Right;
+                playerState = StateManager.PlayerState.Move;
+                moveState = StateManager.MoveState.Right;
             }
             else if (keyCode == KeyCode.UpArrow)
             {
-                playerState = PlayerState.Move;
-                moveState = MoveState.Front;
+                playerState = StateManager.PlayerState.Move;
+                moveState = StateManager.MoveState.Front;
             }
             else if (keyCode == KeyCode.DownArrow)
             {
-                playerState = PlayerState.Move;
-                moveState = MoveState.Back;
+                playerState = StateManager.PlayerState.Move;
+                moveState = StateManager.MoveState.Back;
             }
         }
         #endregion
@@ -98,46 +97,46 @@ public class PlayerController : MonoBehaviour, IKeyInput
 
     private void Move()
     {
-        if (moveState == MoveState.Idle)
+        if (moveState == StateManager.MoveState.Idle)
         {
             transform.position = transform.position;
         }
-        if (moveState == MoveState.Front)
+        if (moveState == StateManager.MoveState.Front)
         {
             transform.position += new Vector3(0, 0, 1) * stats.speed * Time.deltaTime;
         }
-        if (moveState == MoveState.Back)
+        if (moveState == StateManager.MoveState.Back)
         {
             transform.position -= new Vector3(0, 0, 1) * stats.speed * Time.deltaTime;
         }
-        if (moveState == MoveState.Left)
+        if (moveState == StateManager.MoveState.Left)
         {
             transform.position -= new Vector3(1, 0, 0) * stats.speed * Time.deltaTime;
         }
-        if (moveState == MoveState.Right)
+        if (moveState == StateManager.MoveState.Right)
         {
             transform.position += new Vector3(1, 0, 0) * stats.speed * Time.deltaTime;
         }
     }
     private void Rotation()
     {
-        if (moveState == MoveState.Idle)
+        if (moveState == StateManager.MoveState.Idle)
         {
             transform.rotation = transform.rotation;
         }
-        if (moveState == MoveState.Front)
+        if (moveState == StateManager.MoveState.Front)
         {
             transform.rotation = Quaternion.Euler(0, 0f, 0);
         }
-        if (moveState == MoveState.Back)
+        if (moveState == StateManager.MoveState.Back)
         {
             transform.rotation = Quaternion.Euler(0, 180f, 0);
         }
-        if (moveState == MoveState.Left)
+        if (moveState == StateManager.MoveState.Left)
         {
             transform.rotation = Quaternion.Euler(0, -90f, 0);
         }
-        if (moveState == MoveState.Right)
+        if (moveState == StateManager.MoveState.Right)
         {
             transform.rotation = Quaternion.Euler(0, 90f, 0);
         }

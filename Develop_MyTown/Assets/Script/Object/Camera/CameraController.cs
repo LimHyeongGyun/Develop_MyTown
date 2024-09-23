@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
-using static StateManager;
 
 public class CameraController : MonoBehaviour, IMouseInput
 {
     private InputManager inputManager;
+    private BuildManager buildManager;
 
-    public MouseWheelValue mouseWheelValue;
+    public StateManager.MouseWheelValue mouseWheelValue;
 
     public Transform cameraObj; //카메라 오브젝트
     public Transform characterBody; //플레이어 몸
@@ -19,9 +19,11 @@ public class CameraController : MonoBehaviour, IMouseInput
     private float camera_width = -5.5f;
     private float camera_height = 8f;
 
-    private const float cameraRotateX = 35;
+    private const float observeRotateX = 35;
+    private const float buildRotateX = 90;
 
-    Vector3 offset;
+    Vector3 observeOffset;
+    Vector3 buildOffset;
 
     //카메라 Zoom In/Out
     public const float dragSpeed = 200;
@@ -31,15 +33,18 @@ public class CameraController : MonoBehaviour, IMouseInput
     private void Awake()
     {
         inputManager = FindObjectOfType<InputManager>();
+        buildManager = FindObjectOfType<BuildManager>();
     }
     private void Start()
     {
-        CameraRotation();
-        offset = cameraObj.position - characterBody.position;
+        observeOffset = cameraObj.position - characterBody.position;
+        buildOffset = new Vector3(characterBody.transform.position.x, 30f, characterBody.transform.position.z);
+        CameraRotation(StateManager.BuildMode.Observe);
 
         inputManager.mouseAction += InputMouseValue;
+        buildManager.modeAction += CameraRotation;
     }
-    void LateUpdate()
+    void Update()
     {
         CameraPosition();
         ZoomInOut();
@@ -47,43 +52,54 @@ public class CameraController : MonoBehaviour, IMouseInput
 
     private void CameraPosition()
     {
-        cameraObj.localPosition = characterBody.position + offset; //플레이어와 일정간격 유지
+        if (buildManager.buildMode == StateManager.BuildMode.Observe)
+        {
+            cameraObj.localPosition = characterBody.position + observeOffset; //플레이어와 일정간격 유지
+        }
+        else if (buildManager.buildMode == StateManager.BuildMode.Build)
+        {
+            //거리변경 => 맵사이즈 만큼으로 바꿀 것
+            cameraObj.localPosition = new Vector3(0, 30f, 0);
+        }
     }
-    private void CameraRotation()
+    //건설모드에 따라 카메라 각도 변경
+    private void CameraRotation(StateManager.BuildMode buildMode)
     {
-        transform.rotation = Quaternion.Euler(cameraRotateX, 0, 0);
+        if (buildMode == StateManager.BuildMode.Observe)
+        {
+            transform.rotation = Quaternion.Euler(observeRotateX, 0, 0);
+        }
+        else if (buildMode == StateManager.BuildMode.Build)
+        {
+            //건설모드일 때 탑뷰로 변경
+            transform.rotation = Quaternion.Euler(buildRotateX, 0, 0);
+        }
     }
     
     //마우스 입력값 받기
-    public void InputMouseValue(MouseButton mouseBtn, InputMouseType inputType)
+    public void InputMouseValue(MouseButton mouseBtn, StateManager.InputMouseType inputType)
     {
-        if (inputType == InputMouseType.None)
+        //입력이 없을 때
+        if (inputType == StateManager.InputMouseType.None)
         {
             if (mouseBtn == MouseButton.Middle)
             {
-                mouseWheelValue = MouseWheelValue.None;
+                mouseWheelValue = StateManager.MouseWheelValue.None;
             }
         }
-        if (inputType == InputMouseType.Up)
-        {
-
-        }
-        if (inputType == InputMouseType.Down)
-        {
-
-        }
-        if (inputType == InputMouseType.Drag)
+        //드래그 할 때
+        if (inputType == StateManager.InputMouseType.Drag)
         {
             if (mouseBtn == MouseButton.Middle)
             {
                 Vector2 wheelvalue = Input.mouseScrollDelta;
                 if (wheelvalue.y > 0)
                 {
-                    mouseWheelValue = MouseWheelValue.Up;
+                    mouseWheelValue = StateManager.MouseWheelValue.Up;
                 }
                 if (wheelvalue.y < 0)
                 {
-                    mouseWheelValue = MouseWheelValue.Down;
+                    mouseWheelValue = StateManager.MouseWheelValue.Down;
                 }
             }
         }
@@ -92,7 +108,7 @@ public class CameraController : MonoBehaviour, IMouseInput
     private void ZoomInOut()
     {
         //카메라 줌인/아웃
-        if (mouseWheelValue == MouseWheelValue.Up)
+        if (mouseWheelValue == StateManager.MouseWheelValue.Up)
         {
             var zoomValue = cameraObj.GetComponent<Camera>().fieldOfView;
             if (minZoomValue < zoomValue)
@@ -105,7 +121,7 @@ public class CameraController : MonoBehaviour, IMouseInput
                 cameraObj.GetComponent<Camera>().fieldOfView = zoomValue;
             }
         }
-        if (mouseWheelValue == MouseWheelValue.Down)
+        if (mouseWheelValue == StateManager.MouseWheelValue.Down)
         {
             var zoomValue = cameraObj.GetComponent<Camera>().fieldOfView;
             if (zoomValue < maxZoomValue)
