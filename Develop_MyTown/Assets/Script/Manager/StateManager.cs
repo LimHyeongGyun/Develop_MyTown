@@ -75,7 +75,7 @@ public class StateManager
         House,
         Production,
         Curtural,
-        Statue
+        Sculpture
     }
     //가동상태
     public enum OperateType
