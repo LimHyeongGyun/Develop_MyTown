@@ -85,4 +85,17 @@ public class StateManager
         None
     }
     #endregion
+
+    #region UI
+    //토글 UI방향
+    public enum UIDirectionType
+    {
+        None,
+        Appear,
+        Left,
+        Right,
+        Up,
+        Down
+    }
+    #endregion
 }

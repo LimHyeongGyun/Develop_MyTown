@@ -1501,6 +1501,7 @@ GameObject:
   - component: {fileID: 825830211}
   - component: {fileID: 825830210}
   - component: {fileID: 825830212}
+  - component: {fileID: 825830213}
   m_Layer: 5
   m_Name: MenuBtn
   m_TagString: Untagged
@@ -1627,6 +1628,19 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   m_IsOn: 0
+--- !u!114 &825830213
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 825830207}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a20194632d14184fa14941db41e7d00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  direction: 3
 --- !u!1 &911612943
 GameObject:
   m_ObjectHideFlags: 0
@@ -2416,6 +2430,7 @@ GameObject:
   - component: {fileID: 1334469480}
   - component: {fileID: 1334469481}
   - component: {fileID: 1334469482}
+  - component: {fileID: 1334469483}
   m_Layer: 5
   m_Name: StoreList
   m_TagString: Untagged
@@ -2508,6 +2523,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   structureTypeBtns: []
+--- !u!114 &1334469483
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1334469479}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a20194632d14184fa14941db41e7d00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  direction: 4
 --- !u!1 &1535187267
 GameObject:
   m_ObjectHideFlags: 0

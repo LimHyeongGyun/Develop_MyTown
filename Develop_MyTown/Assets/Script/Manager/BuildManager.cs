@@ -42,11 +42,12 @@ public class BuildManager : MonoBehaviour
         {
             uiManager.menuBtn.GetComponent<Toggle>().isOn = false;
             uiManager.horizontalAction.Invoke(uiManager.menuBtn);
+            uiManager.menuBtn.SetActive(false);
         }
         //Obseve상태로 변경
         else if (buildMode == StateManager.BuildMode.Observe)
         {
-
+            uiManager.menuBtn.SetActive(true);
         }
     }
 }
