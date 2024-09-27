@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UI_StructureStore : MonoBehaviour
+public class UI_Store : MonoBehaviour
 {
     [SerializeField]
-    private Button[] structureTypeBtns;
+    private Button[] TypeBtns;
+
+    public GameObject warningImg;
 
     private void Start()
     {
@@ -14,10 +16,10 @@ public class UI_StructureStore : MonoBehaviour
     }
     public void SetupList()
     {
-        structureTypeBtns = gameObject.GetComponentsInChildren<Button>();
-        for (int i = 1; i < structureTypeBtns.Length - 1; i++)
+        TypeBtns = gameObject.GetComponentsInChildren<Button>();
+        for (int i = 1; i < TypeBtns.Length - 1; i++)
         {
-            structureTypeBtns[i].transform.GetChild(0).gameObject.SetActive(false);
+            TypeBtns[i].transform.GetChild(0).gameObject.SetActive(false);
         }
     }
 
@@ -28,20 +30,20 @@ public class UI_StructureStore : MonoBehaviour
         //열릴 때 리셋돼서 보이도록 if문 추가
         if (isOn)
         {
-            ActiveTypeMenu(structureTypeBtns[0].gameObject);
+            ActiveTypeMenu(TypeBtns[0].gameObject);
         }
         gameObject.GetComponent<Toggle>().isOn = isOn;
     }
 
     //상점 메뉴 클릭시
-    public void ActiveTypeMenu(GameObject structureType)
+    public void ActiveTypeMenu(GameObject Type)
     {
-        foreach (Button btn in structureTypeBtns)
+        foreach (Button btn in TypeBtns)
         {
             //전체 메뉴  끄기
             btn.gameObject.transform.GetChild(0).gameObject.SetActive(false);
         }
         //클릭한 UI메뉴만 켜지도록
-        structureType.transform.GetChild(0).gameObject.SetActive(true);
+        Type.transform.GetChild(0).gameObject.SetActive(true);
     }
 }
