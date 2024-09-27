@@ -87,6 +87,13 @@ public class StateManager
     #endregion
 
     #region UI
+    //UI 타입
+    public enum UIType
+    {
+        dynamicUI,
+        staticUI,
+        eventUI
+    }
     //토글 UI방향
     public enum UIDirectionType
     {

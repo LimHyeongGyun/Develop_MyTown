@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class UI_Store : MonoBehaviour
 {
     [SerializeField]
-    private Button[] TypeBtns;
+    private UI_StoreCategory[] TypeBtns;
 
     public GameObject warningImg;
 
@@ -16,8 +16,8 @@ public class UI_Store : MonoBehaviour
     }
     public void SetupList()
     {
-        TypeBtns = gameObject.GetComponentsInChildren<Button>();
-        for (int i = 1; i < TypeBtns.Length - 1; i++)
+        TypeBtns = gameObject.GetComponentsInChildren<UI_StoreCategory>();
+        for (int i = 1; i < TypeBtns.Length; i++)
         {
             TypeBtns[i].transform.GetChild(0).gameObject.SetActive(false);
         }
@@ -38,10 +38,10 @@ public class UI_Store : MonoBehaviour
     //상점 메뉴 클릭시
     public void ActiveTypeMenu(GameObject Type)
     {
-        foreach (Button btn in TypeBtns)
+        foreach (UI_StoreCategory type in TypeBtns)
         {
             //전체 메뉴  끄기
-            btn.gameObject.transform.GetChild(0).gameObject.SetActive(false);
+            type.gameObject.transform.GetChild(0).gameObject.SetActive(false);
         }
         //클릭한 UI메뉴만 켜지도록
         Type.transform.GetChild(0).gameObject.SetActive(true);

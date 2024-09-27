@@ -4,5 +4,6 @@ using UnityEngine;
 
 public class UI_DefaultSet : MonoBehaviour
 {
+    public StateManager.UIType uiType;
     public StateManager.UIDirectionType direction;
 }

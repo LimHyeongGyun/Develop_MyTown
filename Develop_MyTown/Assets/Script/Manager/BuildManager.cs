@@ -13,6 +13,17 @@ public class BuildManager : MonoBehaviour
 
     public Action<StateManager.BuildMode> modeAction;
 
+    public bool drawStructure;
+
+
+    private void Update()
+    {
+        if (buildMode == StateManager.BuildMode.Build && drawStructure)
+        {
+            DrawStructureShape();
+        }
+    }
+
     //건설기능 버튼으로 사용
     public void ChangeBuildMode()
     {
@@ -49,5 +60,10 @@ public class BuildManager : MonoBehaviour
         {
             uiManager.menuBtn.SetActive(true);
         }
+    }
+
+    private void DrawStructureShape()
+    {
+
     }
 }

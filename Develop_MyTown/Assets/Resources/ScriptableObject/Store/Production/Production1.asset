@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7346039fe70712847bfec17d9408a781, type: 3}
+  m_Name: Production1
+  m_EditorClassIdentifier: 
+  structureType: 1
+  structureObj: {fileID: 0}
+  structureId: 0
+  structureName: "0\uBC88\uC9F8 \uC0DD\uC0B0\uC2DC\uC124"
+  structureImg: {fileID: 0}
+  needGold: 0
+  buildTime: 0
+  infrastructureFigure: 0
+  productTime: 0
+  npcId: 0
+  visitProbability: 0
