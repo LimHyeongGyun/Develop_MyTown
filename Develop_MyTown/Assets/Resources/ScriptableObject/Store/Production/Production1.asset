@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Production1
   m_EditorClassIdentifier: 
   structureType: 1
-  structureObj: {fileID: 0}
+  structureObj: {fileID: 1744646427294303098, guid: 69f1222873cb6cd489cca0da3df1067d, type: 3}
   structureId: 0
   structureName: "0\uBC88\uC9F8 \uC0DD\uC0B0\uC2DC\uC124"
   structureImg: {fileID: 0}

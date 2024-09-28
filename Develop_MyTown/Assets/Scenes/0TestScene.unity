@@ -1735,7 +1735,7 @@ MonoBehaviour:
   m_StartCorner: 0
   m_StartAxis: 0
   m_CellSize: {x: 200, y: 200}
-  m_Spacing: {x: 0, y: 25}
+  m_Spacing: {x: 25, y: 0}
   m_Constraint: 0
   m_ConstraintCount: 1
 --- !u!114 &911612946
@@ -2714,7 +2714,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   uiManager: {fileID: 1656968383}
+  inputManager: {fileID: 1656968382}
+  buildInfo: {fileID: 0}
   buildMode: 0
+  drawBuildShape: {fileID: 9166329092673919474, guid: 5a6f2850a752d2d4fb6f398ee20ed4b2, type: 3}
   drawStructure: 0
 --- !u!114 &1656968381
 MonoBehaviour:
