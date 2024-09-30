@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,19 +10,18 @@ public class BuildManager : MonoBehaviour
 {
     [SerializeField]
     private UIManager uiManager;
+    [SerializeField]
+    private InputManager inputManager;
 
     public StateManager.BuildMode buildMode;
 
     public Action<StateManager.BuildMode> modeAction;
 
-    public bool drawStructure;
-
-
     private void Update()
     {
-        if (buildMode == StateManager.BuildMode.Build && drawStructure)
+        if (buildMode == StateManager.BuildMode.Build/* && drawStructure*/)
         {
-            DrawStructureShape();
+            //DrawStructureShape();
         }
     }
 
@@ -60,10 +61,5 @@ public class BuildManager : MonoBehaviour
         {
             uiManager.menuBtn.SetActive(true);
         }
-    }
-
-    private void DrawStructureShape()
-    {
-
     }
 }

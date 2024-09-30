@@ -55,11 +55,25 @@ public class InputManager : MonoBehaviour
         if (mouseAction != null)
         {
             Vector2 wheelInput = Input.mouseScrollDelta;
+            #region Drag
             //마우스 휠을 드래그 했을 때
             if (wheelInput.y != 0)
                 mouseAction.Invoke(MouseButton.Middle, StateManager.InputMouseType.Drag);
             if(wheelInput.y == 0)
                 mouseAction.Invoke(MouseButton.Middle, StateManager.InputMouseType.None);
+            #endregion
+
+            #region Up
+            if (Input.GetMouseButtonUp(0))
+                mouseAction.Invoke(MouseButton.Left, StateManager.InputMouseType.Up);
+            if (Input.GetMouseButtonUp(2))
+                mouseAction.Invoke(MouseButton.Right, StateManager.InputMouseType.Up);
+            #endregion
+
+            #region Press
+            if (Input.GetMouseButtonUp(0))
+                mouseAction.Invoke(MouseButton.Left,StateManager.InputMouseType.Press);
+            #endregion
         }
     }
 }

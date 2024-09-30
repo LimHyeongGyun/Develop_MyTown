@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Sturcture : MonoBehaviour
+public class GridGround : MonoBehaviour
 {
-    public StructureSO structureInfo;
+    
 }

@@ -16,13 +16,17 @@ public class StoreSlot : MonoBehaviour
     public void SelectSlot()
     {
         PlayerData playerData = FindAnyObjectByType<PlayerData>();
-        BuildManager buildManager = FindObjectOfType<BuildManager>();
 
         //구매할 수 있는 재산이 있을 때
         if (playerData.gold >= structureInfo.needGold)
         {
-            buildManager.drawStructure = true;
+            Craft craft = FindObjectOfType<Craft>();
+            craft.CreatePreviewObject(structureInfo);
+
+            //상점메뉴 숨기기
             gameObject.GetComponentInParent<UI_Store>().ToggleValue(false);
+            UIManager uiManager = FindObjectOfType<UIManager>();
+            uiManager.ToggleVerticalMenu(gameObject.GetComponentInParent<UI_Store>().gameObject);
         }
         //재산이 부족해서 구매할 수 없을 때
         else if (playerData.gold < structureInfo.needGold)

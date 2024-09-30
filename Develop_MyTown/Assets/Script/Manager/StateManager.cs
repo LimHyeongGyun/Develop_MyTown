@@ -28,13 +28,14 @@ public class StateManager
         None,
         Up,
         Down,
-        Drag
+        Drag,
+        Press
     }
     public enum MouseWheelValue
     {
         None,
         Up,
-        Down
+        Down,
     }
     #endregion
     //PlayerStateType
@@ -56,6 +57,13 @@ public class StateManager
     }
     #endregion
 
+    #region Ground
+    public enum GroundType
+    {
+        Site,
+        Ban
+    }
+    #endregion
     //StructureType
     #region ∞«√‡π∞
     public enum BuildMode
