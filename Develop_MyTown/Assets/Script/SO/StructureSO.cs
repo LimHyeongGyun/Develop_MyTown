@@ -8,6 +8,9 @@ public class StructureSO : ScriptableObject
     //건축물 공통 요소
     public StateManager.StructureType structureType; //건물 타입
     public GameObject structureObj; //건물 오브젝트
+    public float structureSizeX; //건물 X축 크기
+    public float structureSizeY; //건물 Y축 크기
+    public float structureSizeZ; //건물 Z축 크기
     public int structureId; //건물 아이디
     public string structureName; //건물 이름
     public Sprite structureImg; //건물 이미지

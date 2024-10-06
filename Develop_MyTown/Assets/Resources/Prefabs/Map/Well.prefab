@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 2090077168948028146}
   - component: {fileID: 1019082014111429178}
   - component: {fileID: 8609566481372741599}
-  - component: {fileID: 1903383165752328876}
-  m_Layer: 0
+  - component: {fileID: 7759193150944449427}
+  - component: {fileID: 46286545045598960}
+  m_Layer: 7
   m_Name: Well
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -84,8 +85,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &1903383165752328876
-MeshCollider:
+--- !u!65 &7759193150944449427
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -94,7 +95,19 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -707120724208420507, guid: a552b77647ed64149a53b1c211d3e075, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 1.8357089, y: 2.257377, z: 1.9544775}
+  m_Center: {x: -0.04262802, y: 1.1225854, z: -0.0010400712}
+--- !u!114 &46286545045598960
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7838242834873836752}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a799625186d99f42b54059e4fc64363, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  structureInfo: {fileID: 0}

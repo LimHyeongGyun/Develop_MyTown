@@ -17,14 +17,6 @@ public class BuildManager : MonoBehaviour
 
     public Action<StateManager.BuildMode> modeAction;
 
-    private void Update()
-    {
-        if (buildMode == StateManager.BuildMode.Build/* && drawStructure*/)
-        {
-            //DrawStructureShape();
-        }
-    }
-
     //건설기능 버튼으로 사용
     public void ChangeBuildMode()
     {

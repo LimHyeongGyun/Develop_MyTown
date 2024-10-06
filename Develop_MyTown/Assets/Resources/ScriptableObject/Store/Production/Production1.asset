@@ -14,6 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   structureType: 1
   structureObj: {fileID: 7838242834873836752, guid: cec1842c18a22574693030316caf3373, type: 3}
+  structureSizeX: 2
+  structureSizeY: 2
+  structureSizeZ: 2
   structureId: 0
   structureName: "0\uBC88\uC9F8 \uC0DD\uC0B0\uC2DC\uC124"
   structureImg: {fileID: 0}
