@@ -88,9 +88,15 @@ public class StateManager
     //가동상태
     public enum OperateType
     {
-        Stop,
+        None,
         Operate,
-        None
+        Stop
+    }
+    public enum ConstructState
+    {
+        None,
+        Construct,
+        Completion
     }
     #endregion
 

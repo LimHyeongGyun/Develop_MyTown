@@ -20,7 +20,11 @@ public class StructureSO : ScriptableObject
 
     //건축물 종류에 따른 부가 요소
     //생산 건물일때
-    public float productTime;
+    public float productionTime; //생산시간
+    public int output; //생산량
+    public int harvestableOutput;//수확가능 생산량
+    public int outputPerMinute; //분당 생산량
+    public int maxOutput; //최대 생산량
 
     //문화시설일때
 

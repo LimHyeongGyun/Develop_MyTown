@@ -21,8 +21,12 @@ MonoBehaviour:
   structureName: "0\uBC88\uC9F8 \uC0DD\uC0B0\uC2DC\uC124"
   structureImg: {fileID: 0}
   needGold: 0
-  buildTime: 0
+  buildTime: 3
   infrastructureFigure: 0
-  productTime: 0
+  productionTime: 1
+  output: 0
+  harvestableOutput: 5
+  outputPerMinute: 1
+  maxOutput: 10
   npcId: 0
   visitProbability: 0
