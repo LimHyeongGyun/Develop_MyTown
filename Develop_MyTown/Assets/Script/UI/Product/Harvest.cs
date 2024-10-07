@@ -35,9 +35,10 @@ public class Harvest : MonoBehaviour
         {
             foreach (Structure production in productionStructure)
             {
-                playerData.gold += production.output;//생산한 골드 더하기
+                playerData.IncreaseGold(production.output);//생산한 골드 더하기
                 production.output = 0; //생산량 초기화
             }
+
             productionStructure.Clear();
             harvestable = false;
             ActiveButton();

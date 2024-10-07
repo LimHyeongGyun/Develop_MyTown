@@ -13,12 +13,12 @@ public class CraftUI : MonoBehaviour
     public GameObject previewObj;
 
     private UIManager uiManager;
-    private UI_Store ui_Store;
+    private StoreUI storeUI;
 
     private void Awake()
     {
         uiManager = FindObjectOfType<UIManager>();
-        ui_Store = FindObjectOfType<UI_Store>();
+        storeUI = FindObjectOfType<StoreUI>();
     }
 
     //설치 확정 이전 건물 방향 정하기
@@ -48,8 +48,8 @@ public class CraftUI : MonoBehaviour
         previewObj.GetComponent<PreviewStructure>().DestroyPreview();
 
         //StoreUI Active시키기
-        ui_Store.ToggleValue(true);
-        uiManager.ToggleVerticalMenu(ui_Store.gameObject);        
+        storeUI.ToggleValue(true);
+        uiManager.ToggleVerticalMenu(storeUI.gameObject);        
 
         //Craft UI 제거
         Destroy(this.gameObject);
@@ -61,8 +61,8 @@ public class CraftUI : MonoBehaviour
         previewObj.GetComponent<PreviewStructure>().DestroyPreview();
 
         //StoreUI Active시키기
-        ui_Store.ToggleValue(true);
-        uiManager.ToggleVerticalMenu(ui_Store.gameObject);
+        storeUI.ToggleValue(true);
+        uiManager.ToggleVerticalMenu(storeUI.gameObject);
 
         //Craft UI 제거
         Destroy(this.gameObject);
