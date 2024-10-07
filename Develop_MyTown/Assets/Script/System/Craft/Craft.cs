@@ -62,19 +62,15 @@ public class Craft : MonoBehaviour
 
     public void FixPreviewPosition()
     {
-        GameObject structure = Instantiate(structureSO.structureObj, previewObj.transform.position, Quaternion.identity); //설치할 오브젝트 생성
-
         Vector3 uiPos = new Vector3(previewObj.transform.position.x, 5, previewObj.transform.position.z);
         GameObject _craftUI = Instantiate(craftUI, uiPos, Quaternion.Euler(90f, 0f, 0f)); //설치와 회전을 결정할 UI오브젝트 생성
 
-        //UI에 건물 정보 넘기기
-        _craftUI.GetComponent<CraftUI>().structureObj = structure;
+        //UI에 생성할 건물 정보 넘기기
+        _craftUI.GetComponent<CraftUI>().structurePos = previewObj.transform.position; //preview 오브젝트 위치
+        _craftUI.GetComponent<CraftUI>().previewObj = previewObj;
+        _craftUI.GetComponent<CraftUI>().structureObj = structureSO.structureObj;
+        _craftUI.GetComponent<CraftUI>().structureSO = structureSO;
         
-        //생성한 건물 오브젝트 정보초기화
-        structure.GetComponent<Structure>().Init(structureSO);
-
-        //프리뷰오브젝트 제거와 초기화
-        previewObj.GetComponent<PreviewStructure>().DestroyPreview();
         previewObj = null;
     }
 }
