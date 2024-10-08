@@ -8,15 +8,15 @@ public class StructureSO : ScriptableObject
     //건축물 공통 요소
     public StateManager.StructureType structureType; //건물 타입
     public GameObject structureObj; //건물 오브젝트
+    public Sprite structureImg; //건물 이미지
+    public string structureName; //건물 이름
     public float structureSizeX; //건물 X축 크기
     public float structureSizeY; //건물 Y축 크기
     public float structureSizeZ; //건물 Z축 크기
-    public int structureId; //건물 아이디
-    public string structureName; //건물 이름
-    public Sprite structureImg; //건물 이미지
-    public int needGold; //건설에 필요한 골드
     public float buildTime; //건설시간
-    public float infrastructureFigure; //인프라수치
+    public int structureId; //건물 아이디
+    public int needGold; //건설에 필요한 골드
+    public int infrastructureFigure; //인프라수치
 
     //건축물 종류에 따른 부가 요소
     //생산 건물일때

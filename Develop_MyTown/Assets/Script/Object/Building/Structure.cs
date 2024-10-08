@@ -43,7 +43,7 @@ public class Structure : MonoBehaviour
 
         //플레이어 데이터에서 건축비용 차감하기
         PlayerData playerData = FindObjectOfType<PlayerData>();
-        playerData.gold -= structureInfo.needGold; //건축비용 차감
+        playerData.DecreaseGold(structureInfo.needGold);//건축비용 차감
 
         constructState = StateManager.ConstructState.Construct;
         operateType = StateManager.OperateType.None;
@@ -60,7 +60,11 @@ public class Structure : MonoBehaviour
             buildTime -= Time.deltaTime;
             if (buildTime <= 0)
             {
-                constructState = StateManager.ConstructState.Completion;
+                constructState = StateManager.ConstructState.Completion; //완공상태로 변경
+
+                VillageData villageData = FindObjectOfType<VillageData>();
+                villageData.infrastructureFigure += structureInfo.infrastructureFigure; //마을 인프라수치 추가
+
                 if (constructState == StateManager.ConstructState.Completion)
                 {
                     if (structureInfo.structureType == StateManager.StructureType.Production)

@@ -4,7 +4,13 @@ using UnityEngine;
 
 public class PlayerData : MonoBehaviour
 {
-    public int gold;
+    private const int highRating = 1; //최고 신용등급
+    private const int lowRating = 10; //최저 신용등급
+
+    public int gold; //소지금
+    public int debt; //빚
+    public int curCraditRating;//플레이어 현재 신용등급
+
     void Start()
     {
         
@@ -13,5 +19,14 @@ public class PlayerData : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void IncreaseGold(int gold)
+    {
+        this.gold += gold;
+    }
+    public void DecreaseGold(int gold)
+    {
+        this.gold -= gold;
     }
 }

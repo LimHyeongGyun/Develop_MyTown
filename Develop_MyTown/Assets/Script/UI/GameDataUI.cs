@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class GameDataUI : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public float time; //시간
+    public float gold; //골드
+    public float infrastructureFigure; //인프라수치
+
     void Start()
     {
         
     }
 
-    // Update is called once per frame
     void Update()
     {
         

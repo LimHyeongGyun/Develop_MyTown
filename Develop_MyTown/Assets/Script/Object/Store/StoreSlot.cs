@@ -24,16 +24,18 @@ public class StoreSlot : MonoBehaviour
             craft.CreatePreviewObject(structureInfo);
 
             //상점메뉴 숨기기
-            gameObject.GetComponentInParent<UI_Store>().ToggleValue(false);
+            gameObject.GetComponentInParent<StoreUI>().ToggleValue(false);
             UIManager uiManager = FindObjectOfType<UIManager>();
-            uiManager.ToggleVerticalMenu(gameObject.GetComponentInParent<UI_Store>().gameObject);
+            uiManager.ToggleVerticalMenu(gameObject.GetComponentInParent<StoreUI>().gameObject);
         }
         //재산이 부족해서 구매할 수 없을 때
         else if (playerData.gold < structureInfo.needGold)
         {
-            UI_Store storeUI = FindObjectOfType<UI_Store>();
-            GameObject warningObj = Instantiate(storeUI.warningImg);
-            warningObj.transform.position = Vector3.zero;
+            StoreUI storeUI = FindObjectOfType<StoreUI>();
+            GameObject warningObj = Instantiate(storeUI.warningUI);
+            warningObj.transform.parent = GameObject.Find("MainCanvas").gameObject.transform; //메인캔버스 하위에 생성
+            warningObj.GetComponent<RectTransform>().anchoredPosition = Vector3.zero; //캔버스의 중앙에 위치하도록 초기화
+            warningObj.GetComponent<WarningUI>().WarningText("잔액이 부족합니다."); //정보 입력하기
         }
     }
 }

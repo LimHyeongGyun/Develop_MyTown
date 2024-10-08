@@ -7,8 +7,7 @@ public class StoreUI : MonoBehaviour
 {
     [SerializeField]
     private StoreCategoryUI[] TypeBtns;
-
-    public GameObject warningImg;
+    public GameObject warningUI;
 
     private void Start()
     {
