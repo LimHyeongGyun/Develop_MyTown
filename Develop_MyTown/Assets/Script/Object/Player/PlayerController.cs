@@ -63,6 +63,10 @@ public class PlayerController : MonoBehaviour, IKeyInput
                 playerState = StateManager.PlayerState.None;
                 moveState = StateManager.MoveState.Idle;
             }
+            if (keyCode == KeyCode.F)
+            {
+                playerState = StateManager.PlayerState.None;
+            }
         }
         #endregion
         //Key

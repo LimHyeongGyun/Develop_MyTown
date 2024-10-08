@@ -38,6 +38,8 @@ public class InputManager : MonoBehaviour
 
             if (Input.GetKeyUp(KeyCode.Space))
                 keyAction.Invoke(KeyCode.Space, StateManager.InputKeyType.Up);
+            if (Input.GetKeyUp(KeyCode.F))
+                keyAction.Invoke(KeyCode.F, StateManager.InputKeyType.Up);
             #endregion
 
             #region Press
