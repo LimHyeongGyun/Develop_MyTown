@@ -63,7 +63,7 @@ public class Structure : MonoBehaviour
                 constructState = StateManager.ConstructState.Completion; //완공상태로 변경
 
                 VillageData villageData = FindObjectOfType<VillageData>();
-                villageData.infrastructureFigure += structureInfo.infrastructureFigure; //마을 인프라수치 추가
+                villageData.IncreaseInfraFigure(structureInfo.infrastructureFigure); //마을 인프라수치 추가
 
                 if (constructState == StateManager.ConstructState.Completion)
                 {

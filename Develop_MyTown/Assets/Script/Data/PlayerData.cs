@@ -8,18 +8,8 @@ public class PlayerData : MonoBehaviour
     private const int lowRating = 10; //최저 신용등급
 
     public int gold; //소지금
-    public int debt; //빚
-    public int curCraditRating;//플레이어 현재 신용등급
-
-    void Start()
-    {
-        
-    }
-
-    void Update()
-    {
-        
-    }
+    public int debt = 100000; //빚
+    public int curCraditRating = 8;//플레이어 현재 신용등급
 
     public void IncreaseGold(int gold)
     {
