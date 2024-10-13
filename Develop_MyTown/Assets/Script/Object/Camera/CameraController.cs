@@ -19,7 +19,7 @@ public class CameraController : MonoBehaviour, IMouseInput
     private float camera_width = -5.5f;
     private float camera_height = 8f;
 
-    private const float observeRotateX = 35;
+    public float observeRotateX = 15;
     private const float buildRotateX = 90;
 
     Vector3 observeOffset;
@@ -110,6 +110,11 @@ public class CameraController : MonoBehaviour, IMouseInput
         //카메라 줌인/아웃
         if (mouseWheelValue == StateManager.MouseWheelValue.Up)
         {
+            if (buildManager.buildMode == StateManager.BuildMode.Observe)
+            {
+                observeRotateX = 35f;
+                CameraRotation(StateManager.BuildMode.Observe);
+            }
             var zoomValue = cameraObj.GetComponent<Camera>().fieldOfView;
             if (minZoomValue < zoomValue)
             {
@@ -123,6 +128,11 @@ public class CameraController : MonoBehaviour, IMouseInput
         }
         if (mouseWheelValue == StateManager.MouseWheelValue.Down)
         {
+            if (buildManager.buildMode == StateManager.BuildMode.Observe)
+            {
+                observeRotateX = 35f;
+                CameraRotation(StateManager.BuildMode.Observe);
+            }
             var zoomValue = cameraObj.GetComponent<Camera>().fieldOfView;
             if (zoomValue < maxZoomValue)
             {
@@ -138,6 +148,11 @@ public class CameraController : MonoBehaviour, IMouseInput
     //줌 배율 원래상태로 변경
     public void ReturnZoomValue()
     {
+        if (buildManager.buildMode == StateManager.BuildMode.Observe)
+        {
+            observeRotateX = 15f;
+            CameraRotation(StateManager.BuildMode.Observe);
+        }
         cameraObj.GetComponent<Camera>().fieldOfView = 60f;
     }
 }

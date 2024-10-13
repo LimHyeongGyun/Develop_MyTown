@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GameDataUI : MonoBehaviour
+//VillageData와 PlayerData의 데이터를 받아 UI로 표시해주는 기능
+public class GameDataUI : Singleton<GameDataUI>
 {
-    private PlayerData playerData;
-    private VillageData villageData;
+    private static GameDataUI instance = null;
 
     [SerializeField]
     private Text timeText;
@@ -15,23 +15,41 @@ public class GameDataUI : MonoBehaviour
     [SerializeField]
     private Text seasonText;
 
-    public float gold; //골드
-    public float infrastructureFigure; //인프라수치
+    [SerializeField]
+    private Text infraDataText;
+    [SerializeField]
+    private Text goldDataaText;
 
-    protected virtual void Awake()
+    protected override void Awake()
     {
-        playerData = GetComponent<PlayerData>();
-        villageData = GetComponent<VillageData>();
+        base.Awake();
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
     }
-
-    protected virtual void Start()
+    private void Start()
     {
         
     }
 
-    protected virtual void Update()
+    private void Update()
     {
         
+    }
+
+    public void ChangeGold(int gold)
+    {
+        goldDataaText.text = gold.ToString();
+    }
+
+    public void ChangeInfraFigure(int infraFigure)
+    {
+        infraDataText.text = infraFigure.ToString();
     }
 
     public void ChangeTime(int month, int date, int hour, int minute)

@@ -2,18 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+public class GameManager : Singleton<GameManager>
 {
-    private static GameManager gameManagerInstance = null;
-    private static GameManager GameManagerInstance { get { return gameManagerInstance; } }
+    private static GameManager instance = null;
 
     private void Awake()
     {
-        if (gameManagerInstance == null)
+        if (instance == null)
         {
-            gameManagerInstance = this;
-
-            DontDestroyOnLoad(this.gameObject);
+            instance = this;
         }
         else
         {
