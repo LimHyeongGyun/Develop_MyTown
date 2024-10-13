@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 
 public class PlayerData : Singleton<PlayerData>
@@ -35,6 +36,7 @@ public class PlayerData : Singleton<PlayerData>
         gameDataUI.ChangeGold(gold);
     }
 
+    //°ñµå °è»ê
     public void IncreaseGold(int gold)
     {
         this.gold += gold;
@@ -44,5 +46,15 @@ public class PlayerData : Singleton<PlayerData>
     {
         this.gold -= gold;
         gameDataUI.ChangeGold(gold);
+    }
+
+    //ºú °è»ê
+    public void IncreaseDebt(int debt)
+    {
+        this.debt += debt;
+    }
+    public void DecreaseDebt(int debt)
+    {
+        this.debt -= debt;
     }
 }

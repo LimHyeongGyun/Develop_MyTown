@@ -13,17 +13,21 @@ public class VillageDataBase
 {
     public int infraFigure;
 
-    Dictionary<Structure, Vector3> structureDB = new Dictionary<Structure, Vector3>();
+    public Dictionary<Structure, Vector3> structureDB = new Dictionary<Structure, Vector3>();
 }
 public class SaveJsonData : MonoBehaviour
 {
     public PlayerDataBase playerDB;
     public VillageDataBase villageDB;
+
+    public string pSavePath;
+    public string vSavePath;
+
     public void SavePlayerDataAsJason()
     {
         string playerJsonData = JsonUtility.ToJson(playerDB, true);
         //데이터 저장 경로
-        string pSavePath = Path.Combine(Application.dataPath, "PlayerData.json");
+        pSavePath = Path.Combine(Application.dataPath, "PlayerData.json");
         //기존에 저장된 파일이 있다면 삭제
         if (File.Exists(pSavePath))
         {
@@ -36,7 +40,7 @@ public class SaveJsonData : MonoBehaviour
     {
         string villageJsonData = JsonUtility.ToJson(villageDB, true);
         //데이터 저장 경로
-        string vSavePath = Path.Combine(Application.dataPath, "VillageData.json");
+        vSavePath = Path.Combine(Application.dataPath, "VillageData.json");
         //기존에 저장된 파일이 있다면 삭제
         if (File.Exists(vSavePath))
         {
@@ -54,6 +58,9 @@ public class SaveJsonData : MonoBehaviour
         string jsonData = File.ReadAllText(pLoadPath);
 
         playerDB = JsonUtility.FromJson<PlayerDataBase>(jsonData);
+
+        DataManager dataManager = FindObjectOfType<DataManager>();
+        dataManager.LoadPlayerData();
     }
     public void LoadVillageDataFromJason()
     {
@@ -62,5 +69,8 @@ public class SaveJsonData : MonoBehaviour
         string jsonData = File.ReadAllText(vLoadPath);
 
         villageDB = JsonUtility.FromJson<VillageDataBase>(jsonData);
+
+        DataManager dataManager = FindObjectOfType<DataManager>();
+        dataManager.LoadVillageData();
     }
 }

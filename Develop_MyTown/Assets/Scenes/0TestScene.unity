@@ -2815,6 +2815,7 @@ GameObject:
   - component: {fileID: 1203127016}
   - component: {fileID: 1203127013}
   - component: {fileID: 1203127012}
+  - component: {fileID: 1203127017}
   m_Layer: 0
   m_Name: Datas
   m_TagString: Untagged
@@ -2880,6 +2881,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameDataUI: {fileID: 1288061228}
+--- !u!114 &1203127017
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1203127011}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 964f97b39b65a5e43830545dc8f7ca06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1215484573
 GameObject:
   m_ObjectHideFlags: 0
@@ -3652,6 +3665,7 @@ GameObject:
   - component: {fileID: 1656968380}
   - component: {fileID: 1656968382}
   - component: {fileID: 1656968383}
+  - component: {fileID: 1656968384}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -3726,6 +3740,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   menuBtn: {fileID: 825830207}
+--- !u!114 &1656968384
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1656968376}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e82366f18a9cc54f8089eb2a19d9cb7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerData: {fileID: 1203127012}
+  villageData: {fileID: 1203127013}
+  json: {fileID: 1203127017}
 --- !u!1 &1663218666
 GameObject:
   m_ObjectHideFlags: 0
@@ -3910,10 +3939,10 @@ RectTransform:
   m_Father: {fileID: 691478377}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 120, y: -70}
+  m_SizeDelta: {x: 200, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1783696103
 MonoBehaviour:
