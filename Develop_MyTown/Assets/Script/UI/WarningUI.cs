@@ -11,8 +11,9 @@ public class WarningUI : Singleton<WarningUI>
     private float destroyTime = 3f;
     private float fadeTime;
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         if (instance == null)
         {
             instance = this;

@@ -106,7 +106,6 @@ public class StateManager
     {
         dynamicUI,
         staticUI,
-        eventUI
     }
     //토글 UI방향
     public enum UIDirectionType

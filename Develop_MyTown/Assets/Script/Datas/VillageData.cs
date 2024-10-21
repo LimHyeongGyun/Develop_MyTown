@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 
 public class VillageData : Singleton<VillageData>
 {
     private static VillageData instance = null;
 
+    [SerializeField]
+    private SaveJsonData json;
     [SerializeField]
     private GameDataUI gameDataUI;
 
@@ -26,6 +29,13 @@ public class VillageData : Singleton<VillageData>
     }
     private void Start()
     {
+        string pLoadPath = Path.Combine(Application.dataPath, "VillageData.json");
+        //저장된 플레이어 데이터가 있다면 불러오기
+        if (File.Exists(pLoadPath))
+        {
+            json.LoadVillageDataFromJason(pLoadPath);
+            Debug.Log("Load Village Data");
+        }
         gameDataUI.ChangeInfraFigure(infrastructureFigure);
     }
 

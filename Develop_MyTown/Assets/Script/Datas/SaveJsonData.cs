@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 
+[System.Serializable]
 public class PlayerDataBase
 {
     public int playerGold;
     public int playerDebt;
     public int playerCradintRating;
 }
+[System.Serializable]
 public class VillageDataBase
 {
     public int infraFigure;
@@ -20,14 +22,11 @@ public class SaveJsonData : MonoBehaviour
     public PlayerDataBase playerDB;
     public VillageDataBase villageDB;
 
-    public string pSavePath;
-    public string vSavePath;
-
     public void SavePlayerDataAsJason()
     {
         string playerJsonData = JsonUtility.ToJson(playerDB, true);
         //데이터 저장 경로
-        pSavePath = Path.Combine(Application.dataPath, "PlayerData.json");
+        string pSavePath = Path.Combine(Application.dataPath, "PlayerData.json");
         //기존에 저장된 파일이 있다면 삭제
         if (File.Exists(pSavePath))
         {
@@ -40,7 +39,7 @@ public class SaveJsonData : MonoBehaviour
     {
         string villageJsonData = JsonUtility.ToJson(villageDB, true);
         //데이터 저장 경로
-        vSavePath = Path.Combine(Application.dataPath, "VillageData.json");
+        string vSavePath = Path.Combine(Application.dataPath, "VillageData.json");
         //기존에 저장된 파일이 있다면 삭제
         if (File.Exists(vSavePath))
         {
@@ -50,10 +49,8 @@ public class SaveJsonData : MonoBehaviour
         File.WriteAllText(vSavePath, villageJsonData);
     }
 
-    public void LoadPlayerDataFromJason()
+    public void LoadPlayerDataFromJason(string pLoadPath)
     {
-        //데이터 불러올 경로
-        string pLoadPath = Path.Combine(Application.dataPath, "PlayerData.jason");
         //파일의 텍스트를 string으로 저장
         string jsonData = File.ReadAllText(pLoadPath);
 
@@ -62,9 +59,8 @@ public class SaveJsonData : MonoBehaviour
         DataManager dataManager = FindObjectOfType<DataManager>();
         dataManager.LoadPlayerData();
     }
-    public void LoadVillageDataFromJason()
+    public void LoadVillageDataFromJason(string vLoadPath)
     {
-        string vLoadPath = Path.Combine(Application.dataPath, "VillageData.jason");
         //파일의 텍스트를 string으로 저장
         string jsonData = File.ReadAllText(vLoadPath);
 

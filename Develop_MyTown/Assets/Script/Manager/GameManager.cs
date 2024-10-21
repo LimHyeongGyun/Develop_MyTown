@@ -6,8 +6,9 @@ public class GameManager : Singleton<GameManager>
 {
     private static GameManager instance = null;
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         if (instance == null)
         {
             instance = this;

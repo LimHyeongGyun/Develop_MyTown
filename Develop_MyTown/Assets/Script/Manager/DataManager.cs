@@ -56,6 +56,7 @@ public class DataManager : Singleton<DataManager>
 
     private void OnApplicationQuit()
     {
+        Debug.Log("save");
         SavePlayerData();
         SaveVillageData();
     }

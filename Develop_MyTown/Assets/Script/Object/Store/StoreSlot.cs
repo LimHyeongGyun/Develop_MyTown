@@ -33,7 +33,7 @@ public class StoreSlot : MonoBehaviour
         {
             StoreUI storeUI = FindObjectOfType<StoreUI>();
             GameObject warningObj = Instantiate(storeUI.warningUI);
-            warningObj.transform.parent = GameObject.Find("MainCanvas").gameObject.transform; //메인캔버스 하위에 생성
+            warningObj.transform.parent = GameObject.Find("SystemCanvas").gameObject.transform; //메인캔버스 하위에 생성
             warningObj.GetComponent<RectTransform>().anchoredPosition = Vector3.zero; //캔버스의 중앙에 위치하도록 초기화
             warningObj.GetComponent<WarningUI>().WarningText("잔액이 부족합니다."); //정보 입력하기
         }

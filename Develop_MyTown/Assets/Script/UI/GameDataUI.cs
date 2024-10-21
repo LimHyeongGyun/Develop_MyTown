@@ -32,15 +32,6 @@ public class GameDataUI : Singleton<GameDataUI>
             Destroy(this.gameObject);
         }
     }
-    private void Start()
-    {
-        
-    }
-
-    private void Update()
-    {
-        
-    }
 
     public void ChangeGold(int gold)
     {
